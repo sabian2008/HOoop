@@ -18,28 +18,34 @@ def main():
     tiempo_final = datetime.datetime(2016, 3, 5, 10)
 
     import math
-    # parametros del generador de senales
+    # Parametros del generador de senales
     amplitud = 0.2
     fase = 1
     frecuencia = 20*math.pi
 
-    #TODO construir un nuevo genrador de senales
+    # Obtengo mi generador con los parametros adecuados
+    MiGen = generador.Generador(amplitud, fase, frecuencia)
 
-    #TODO construir un detector
+    MiDet = detector.Detector()
 
-    #TODO construir un nuevo radar
+    #Creo un radar
+    MiRad = radar.Radar(MiGen,MiDet)
 
 
-    # parametros para un blanco
+    # Parametros para un blanco
     amplitud_de_frecuencia_del_blanco = amplitud + 100
     tiempo_inicial_del_blanco = datetime.datetime(2016, 3, 5, 2)
     tiempo_final_del_blanco = datetime.datetime(2016, 3, 5, 4)
-    #TODO contruir un nuevo blanco
 
+    # Creo un blanco
+    MiBlanco = blanco.Blanco(amplitud_de_frecuencia_del_blanco,\
+        tiempo_inicial_del_blanco, tiempo_final_del_blanco)
 
-    #TODO contruir un medio
+    # Creo un medio
+    MiMedio = medio.Medio([MiBlanco])
 
-    #TODO construir un radar
+    # Comienzo la operacion
+    MiRad.detectar(MiMedio, tiempo_inicial, tiempo_final)
 
 if __name__ == "__main__":
     main()

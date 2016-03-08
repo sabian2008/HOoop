@@ -4,11 +4,17 @@ class Medio(object):
         self.blancos = blancos
 
 
-    def reflejar(self, una_senal, tiempo_inicial, tiempo_final):
+    def reflejar(self, una_senal, tiempo_inicial, tiempo_final, sampling_f):
         """
         Los blancos en el medio reflejan la senal
         """
+        # Inicio una lista de reflexiones
+        senal_reflejada = []
 
-        #TODO reflejar en un medio debe reflejar en todos los blancos de un medio
-        #y devolver la senal reflejada
-        pass
+        #Envio la senal a los blancos y escucho. Cada respuesta va en un canal
+        #separado
+
+        for blanco in self.blancos:
+            senal_reflejada.append(blanco.reflejar(una_senal,\
+                tiempo_inicial, tiempo_final, sampling_f))
+        return senal_reflejada

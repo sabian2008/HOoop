@@ -4,7 +4,8 @@ class Detector(object):
         #TODO: completar con la inicializacion de los parametros del objeto
         pass
 
-    def detectar(self, senal):
+    def detectar(self, original, senal, comienzo, sampling_f):
 
-        #TODO: Completar
-        pass
+        for line in senal:
+            if (not original == line ):
+                print "Se detecto algo"
