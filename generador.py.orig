@@ -21,11 +21,18 @@ class Generador(object):
         cantidad_muestras = (tiempo_final - tiempo_inicial).seconds/\
         self.frecuencia_muestreo
 
+<<<<<<< HEAD
         muestras = range(int(math.ceil(cantidad_muestras)))
-
+=======
+        muestras = range(cantidad_muestras)
+>>>>>>> 4ff0ad432eb191dc7a5edf1b6f5c1a23401ccf20
         #TODO agregar un ruido blanco a la senal
 
         ret = [self.amplitud*math.sin(2*(1/self.frecuencia)*i+self.fase) \
         for i in muestras]
 
+<<<<<<< HEAD
         return ret, self.frecuencia_muestreo
+=======
+        return ret
+>>>>>>> 4ff0ad432eb191dc7a5edf1b6f5c1a23401ccf20

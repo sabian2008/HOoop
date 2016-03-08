@@ -4,7 +4,8 @@ class Blanco(object):
     """
 
     def __init__(self, amplitud, tiempo_inicial, tiempo_final):
-	self.amplitud = amplitud
+<<<<<<< HEAD
+        self.amplitud = amplitud
         self.tiempo_inicial = tiempo_inicial
         self.tiempo_final = tiempo_final
 
@@ -26,3 +27,15 @@ class Blanco(object):
             # modifico la senal
             for i in range(min_t, max_t):
                 senal[i] = senal[i] + self.amplitud
+=======
+        #TODO: completar con la inicializacion de los parametros del objeto
+        pass
+
+    def reflejar(self, senal, tiempo_inicial, tiempo_final):
+
+        #TODO ver como se encajan los tiempos del blanco y del intervalo de tiempo
+        #(interseccion de invervalos)
+        # despues aplicar los parametros del blanco sobre ese intervalo de tiempo
+        pass
+        
+>>>>>>> 4ff0ad432eb191dc7a5edf1b6f5c1a23401ccf20
