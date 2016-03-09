@@ -7,5 +7,5 @@ class Detector(object):
     def detectar(self, original, senal, comienzo, sampling_f):
 
         for line in senal:
-            if (not original == line ):
+            if (not original == line):
                 print "Se detecto algo"

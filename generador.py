@@ -17,11 +17,10 @@ class Generador(object):
     def generar(self, tiempo_inicial, tiempo_final):
 
         import math
-
         cantidad_muestras = (tiempo_final - tiempo_inicial).seconds/\
         self.frecuencia_muestreo
 
-        muestras = range(int(math.ceil(cantidad_muestras)))
+        muestras = xrange(int(math.ceil(cantidad_muestras)))
 
         #TODO agregar un ruido blanco a la senal
 

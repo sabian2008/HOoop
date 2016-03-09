@@ -28,6 +28,3 @@ class Radar(object):
         # Proceso la senal
         return self.detector.detectar(una_senal,una_senal_reflejada,\
             tiempo_inicial, sampling_f)
-
-
-    #TODO agregar el metodo plotear_senal

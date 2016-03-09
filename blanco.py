@@ -11,18 +11,33 @@ class Blanco(object):
     def reflejar(self, senal, tiempo_inicial, tiempo_final, sampling_f):
         import math
 
-        # Consigo cuanto tiempo y desde cuando debo modificar la senal
-        delta_t = (self.tiempo_final - tiempo_inicial).seconds
-        min_t = max([self.tiempo_inicial, tiempo_inicial]).seconds
+        ret = list(senal)
+        # # Consigo cuanto tiempo (y muestras) debo modificar la senal
+        # delta_t = (self.tiempo_final - tiempo_inicial).seconds
+        # delta_t = int(math.ceil(delta_t / sampling_f))
 
-        # Paso esos valores de tiempo a valores de muestra
-        delta_t = round(delta_t / sampling_f)
-        min_t = round((tiempo_final - min_t) / sampling_f)
-        max_t = round(min([tiempo_final,min_t + delta_t]))
+        # Consigo cuando empiezo a modificar (si negativo, es en muestra 0 y
+        # ni lo paso a muestras)
+        min_t = (self.tiempo_inicial - tiempo_inicial).seconds
+        if min_t > 0:
+            min_t = int(math.floor(min_t / sampling_f))
+        else:
+            min_t = 0
+
+        # Consigo cuando termino de modificar, misma idea
+        max_t = (self.tiempo_final - tiempo_final).seconds
+        if max_t > 0:
+            max_t = len(senal) - 1
+        else:
+            max_t = int(math.ceil((self.tiempo_final - tiempo_inicial).seconds \
+                / sampling_f))
 
         # Si delta t es menor que cero, entonces no hay reflexion
-        if (not delta_t < 0):
+        if (self.tiempo_final - tiempo_inicial).seconds > 0 and \
+            (self.tiempo_inicial - tiempo_final).seconds:
+            
             # Desde el t minimo hasta el maximo de interseccion
             # modifico la senal
             for i in range(min_t, max_t):
-                senal[i] = senal[i] + self.amplitud
+                ret[i] = senal[i] + self.amplitud
+        return ret
