@@ -9,3 +9,5 @@ class Detector(object):
         for line in senal:
             if (not original == line):
                 print "Se detecto algo"
+            else:
+                print "No se detecto nada"

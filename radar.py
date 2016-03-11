@@ -25,6 +25,22 @@ class Radar(object):
         una_senal_reflejada = medio.reflejar(una_senal, tiempo_inicial, \
         tiempo_final, sampling_f)
 
+        self.plotear_senal(una_senal, una_senal_reflejada[0])
+
         # Proceso la senal
         return self.detector.detectar(una_senal,una_senal_reflejada,\
             tiempo_inicial, sampling_f)
+
+
+    # Graphs
+    def plotear_senal(self, orig, ref):
+        import matplotlib.pyplot as plt
+
+        x = xrange(0,len(orig))
+
+        fig, (ax1, ax2) = plt.subplots(nrows=2, sharex=True)
+        ax1.plot(x, orig, label="Original")
+        ax2.plot(x, ref, label="Reflejada")
+        ax1.legend(loc="best")
+        ax2.legend(loc="best")
+        plt.show(True)

@@ -32,10 +32,9 @@ class Blanco(object):
             max_t = int(math.ceil((self.tiempo_final - tiempo_inicial).seconds \
                 / sampling_f))
 
-        # Si delta t es menor que cero, entonces no hay reflexion
-        if (self.tiempo_final - tiempo_inicial).seconds > 0 and \
-            (self.tiempo_inicial - tiempo_final).seconds:
-            
+        # Si estoy en las condiciones de deteccion, modifico la senal
+        if (self.tiempo_final > tiempo_inicial) and \
+            (self.tiempo_inicial < tiempo_final):
             # Desde el t minimo hasta el maximo de interseccion
             # modifico la senal
             for i in range(min_t, max_t):
